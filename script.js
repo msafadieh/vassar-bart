@@ -1,4 +1,4 @@
-var currentSize = 50;
+var currentSize = 20;
 var click = 0;
 var money = 0
 var random = Math.floor(Math.random() * 128 + 1);
@@ -9,7 +9,7 @@ function onClick() {
     document.getElementById('money').innerHTML = 'You lost all your money!';
   }
   else if (click < random) {
-    currentSize += 25;
+    currentSize += 5;
     click += 1;
     document.getElementById('balloon').style.width = currentSize + 'px';
     money += 5;
