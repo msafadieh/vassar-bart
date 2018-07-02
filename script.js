@@ -4,8 +4,8 @@ var money = 0
 var random = Math.floor(Math.random() * 128 + 1);
 function displayMoney(value) {
 	if (value % 100 == 0) { return value/100 + '.00'; }
-	else if (value % 10 == 0) { return value/100 + '0' }
-	else { return value/100 }
+	else if (value % 10 == 0) { return value/100 + '0'; }
+	else { return value/100; }
 }
 function onClick() {
 	if (click == random) {
