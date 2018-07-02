@@ -1,19 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Vassar BART</title>
+  </head>
   <body>
     <style>
     body {
       font-family: 'Helvetica', sans-serif;
       font-size: 40px;
+      text-align: center;
     }
     </style>
     <script src="script.js"></script>
-    <center>
-      <button id="more" onclick="onClick()">More money!</button>
-      <button id="cashOut" onclick="cashOut()">Cash out!</button>
-      <br><br>
-      <img id="balloon" src="balloon.jpg" style='width:50px'>
-      <p id="popped" style="display: none;">POPPED!</p>
-      <p id="money">$0</p>
-    </center>
+    <button id="more" onclick="onClick()">More money!</button>
+    <button id="cashOut" onclick="cashOut()">Cash out!</button>
+    <br><br>
+    <img alt="Balloon" id="balloon" src="balloon.jpg" style='width:50px'>
+    <p id="popped" style="display: none;">POPPED!</p>
+    <p id="money">$0</p>
   </body>
 </html>
