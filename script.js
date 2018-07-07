@@ -40,7 +40,7 @@ function onClick() {
 function cashOut() {
 	totalMoney += money
 	document.getElementById('totalMoney').innerHTML = 'Total Money: $' + displayMoney(totalMoney);
-	data['trials'].push({'clicks': click, 'popped?': false, 'money': '$' + money/100});
+	data['trials'].push({'clicks': click, 'popped?': false, 'money': money/100});
 	reset();
 }
 
