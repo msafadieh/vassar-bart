@@ -49,7 +49,7 @@ function cashOut() {
 // otherwise, it just rests the variables and increases the "trial" var.
 function reset() {
 	if (trial == maxTrials) {
-		data['finalAmount'] = totalMoney;
+		data['finalAmount'] = money/100;
 		document.getElementById('number').innerHTML = "Experiment ended.";
 		document.getElementById('balloon').style.display = 'none';
 		document.getElementById('money').innerHTML = "Balloon pops: " + totalPopped;
