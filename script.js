@@ -2,6 +2,7 @@
 var currentSize = 50;
 var click = 0;
 var money = 0;
+var previousMoney = 0;
 var totalClick = 0;
 var totalMoney = 0;
 var totalPopped = 0;
@@ -24,6 +25,7 @@ function onClick() {
 	if (click == random) {
 		totalPopped++;
 		data['trials'].push({'clicks': click, 'popped?': true, 'money': money/100});
+		previousMoney = 0;
 		reset();
 	}
 	else if (click < random) {
@@ -40,6 +42,7 @@ function onClick() {
 function cashOut() {
 	totalMoney += money
 	document.getElementById('totalMoney').innerHTML = 'Total Money: $' + displayMoney(totalMoney);
+	previousMoney = money;
 	data['trials'].push({'clicks': click, 'popped?': false, 'money': money/100});
 	reset();
 }
@@ -62,6 +65,7 @@ function reset() {
 		click = 0;
 		money = 0;
 		random = Math.floor(Math.random() * 128 + 1);
+		document.getElementById('previousMoney').innerHTML = 'Previous Money: $' + displayMoney(previousMoney);
 		document.getElementById('number').innerHTML = "Ballon Number: " + trial;
 		document.getElementById('balloon').style.width = currentSize + 'px';
 		document.getElementById('money').innerHTML = 'Current Money: $' + displayMoney(money);
