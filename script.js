@@ -32,7 +32,6 @@ function onClick() {
 		reset();
 	}
 	else if (click < random) {
-		document.getElementById("inflate").play();
 		document.getElementById('balloon').style.display = '';
 		document.getElementById('popped-text').style.display = 'none';
 		currentSize += 2; 
