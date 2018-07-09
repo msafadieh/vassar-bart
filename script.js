@@ -1,5 +1,5 @@
 // declares variables
-var currentSize = 50;
+var currentSize = 72;
 var click = 0;
 var money = 0;
 var previousMoney = 0;
@@ -23,25 +23,32 @@ function displayMoney(value) {
 function onClick() {
 	totalClick++;
 	if (click == random) {
+		document.getElementById("explode").play();
 		totalPopped++;
 		data['trials'].push({'clicks': click, 'popped?': true, 'money': money/100});
+		document.getElementById('balloon').style.display = 'none';
+		document.getElementById('popped-text').style.display = '';
 		previousMoney = 0;
 		reset();
 	}
 	else if (click < random) {
-		currentSize++; 
+		document.getElementById("inflate").play();
+		document.getElementById('balloon').style.display = '';
+		document.getElementById('popped-text').style.display = 'none';
+		currentSize += 2; 
 		click++;
-		document.getElementById('balloon').style.width = currentSize + 'px';
+		document.getElementById('balloon').style.width = currentSize + 'px';		
 		money += 5;
-		document.getElementById('money').innerHTML = 'Current Gain: $' + displayMoney(money);
+		document.getElementById('money').innerHTML = 'Current Balloon: $' + displayMoney(money);
 	}
 }
 
 // cashes out of the value (adds money to totalMoney), and rests and moves to 
 // the next trial
 function cashOut() {
+	document.getElementById("collect").play();
 	totalMoney += money
-	document.getElementById('totalMoney').innerHTML = 'Total Gain: $' + displayMoney(totalMoney);
+	document.getElementById('totalMoney').innerHTML = 'Total Earned: $' + displayMoney(totalMoney);
 	previousMoney = money;
 	data['trials'].push({'clicks': click, 'popped?': false, 'money': money/100});
 	reset();
@@ -61,13 +68,13 @@ function reset() {
 	}
 	else {
 		trial++;
-		currentSize = 50;
+		currentSize = 72;
 		click = 0;
 		money = 0;
 		random = Math.floor(Math.random() * 128 + 1);
-		document.getElementById('previousMoney').innerHTML = 'Previous Gain: $' + displayMoney(previousMoney);
-		document.getElementById('number').innerHTML = "Ballon Number: " + trial;
+		document.getElementById('previousMoney').innerHTML = 'Earned on Previous Balloon: $' + displayMoney(previousMoney);
+		document.getElementById('number').innerHTML = "Balloon Number: " + trial;
 		document.getElementById('balloon').style.width = currentSize + 'px';
-		document.getElementById('money').innerHTML = 'Current Gain: $' + displayMoney(money);
+		document.getElementById('money').innerHTML = 'Current Balloon: $' + displayMoney(money);
 	}
 }

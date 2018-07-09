@@ -2,24 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Vassar BART</title>
   </head>
   <body>
-    <style>
-    body {
-      font-family: 'Helvetica', sans-serif;
-      font-size: 30px;
-      text-align: center;
-    }
-    </style>
+    <audio id="explode" src="sounds/explode.mp3"></audio>
+    <audio id="inflate" src="sounds/inflate.mp3"></audio>
+    <audio id="collect" src="sounds/collect.mp3"></audio>
+    <div id="main">
+      <p id="number">Balloon Number: 1</p>
+      <p id="totalMoney">Total Earned: $0.00</p>
+      <p id="previousMoney">Earned on Previous Balloon: $0.00</p>
+      <br><br>
+      <p id="money">Current Balloon: $0.00</p>
+      <div id="big-container">
+        <div id="balloon-container">
+          <img alt="Balloon" id="balloon" src="balloon.png" style='width:72px'>
+        </div>
+        <div id="popped">
+          <p id="popped-text" style="display:none;">Balloon Popped!</p>
+        </div>
+        <div id="buttons">
+          <button id="more" onclick="onClick()">Pump Up the Balloon</button>
+          <button id="cashOut" onclick="cashOut()">Transfer Current $$</button>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
-    <p id="number">Ballon Number: 1</p>
-    <p id="previousMoney">Previous Gain: $0.00</p>
-    <p id="money">Current Gain: $0.00</p>
-    <p id="totalMoney">Total Gain: $0.00</p>
-    <button id="more" onclick="onClick()">More money!</button>
-    <button id="cashOut" onclick="cashOut()">Cash out!</button>
-    <br>
-    <img alt="Balloon" id="balloon" src="balloon.jpg" style='width:50px'>
   </body>
 </html>

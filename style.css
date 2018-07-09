@@ -1,0 +1,45 @@
+#main {
+    position: absolute;
+    width: 500px;
+    height: 100%;
+    right: 25%;
+    left: 50%;
+    margin-left: -250px;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+#big-container {
+    position: absolute;
+    width: 328px;
+    height: 460px;
+    right: 25%;
+    left: 50%;
+    margin-left: -164px;
+}
+#balloon-container {
+    position: absolute;
+    width: 328px;
+    right: 25%;
+    left: 50%;
+    margin-left: -164px;
+    bottom: 25px;
+}
+#buttons {
+    position:absolute;
+    width:300px;
+    right:25%;
+    left:50%;
+    bottom: 0px;
+    margin-left:-150px;
+}
+
+#popped {
+    position: absolute;
+    bottom: 217.75px;
+    width: 176px;
+    height: 24.5px;
+    right: 25%;
+    left: 50%;
+    margin-left: -88px;
+}
