@@ -1,4 +1,4 @@
-// declares variables
+// declares variables used in the program
 var currentSize = 72;
 var click = 0;
 var money = 0;
@@ -10,6 +10,27 @@ var trial = 1;
 var maxTrials = 45
 var data = {'trials': []};
 var random = Math.floor(Math.random() * 128 + 1);
+
+// declares HTML tags:
+
+// image:
+var balloonImg = document.getElementById('balloon');
+
+// text:
+var poppedText = document.getElementById('popped-text');
+var moneyText = document.getElementById('money');
+var totalMoneyText = document.getElementById('totalMoney');
+var previousMoneyText = document.getElementById('previousMoney');
+var trialNumberText = document.getElementById('number');
+
+// buttons:
+var poppedButton = document.getElementById('popped-button');
+var moreButton = document.getElementById('more');
+var cashOutButton = document.getElementById('cashOut');
+
+// sound:
+var poppedSound = document.getElementById("explode");
+var collect = document.getElementById("collect");
 
 // displays numbers in form of x.xx
 function displayMoney(value) {
@@ -23,33 +44,56 @@ function displayMoney(value) {
 function onClick() {
 	totalClick++;
 	if (click == random) {
-		document.getElementById("explode").play();
+		// plays sound
+		poppedSound.play();
+
+		// changes variables
 		totalPopped++;
-		data['trials'].push({'clicks': click, 'popped?': true, 'money': money/100});
-		document.getElementById('balloon').style.display = 'none';
-		document.getElementById('popped-text').style.display = '';
 		previousMoney = 0;
-		reset();
+
+		// saves data
+		data['trials'].push({'clicks': click, 'popped?': true, 'money': money/100});
+
+		// changes element visiblity
+		balloonImg.style.display = 'none';
+		moreButton.style.display = 'none';
+		cashOutButton.style.display = 'none';
+		poppedText.style.display = '';
+		poppedButton.style.display = '';
 	}
 	else if (click < random) {
-		document.getElementById('balloon').style.display = '';
-		document.getElementById('popped-text').style.display = 'none';
+		// changes variables
 		currentSize += 2; 
 		click++;
-		document.getElementById('balloon').style.width = currentSize + 'px';		
 		money += 5;
-		document.getElementById('money').innerHTML = 'Current Balloon: $' + displayMoney(money);
+
+		// changes elements
+		balloonImg.style.width = currentSize + 'px';		
+		moneyText.innerHTML = 'Current Balloon: $' + displayMoney(money);
+
+		// changes element visibility
+		balloonImg.style.display = '';
+		poppedText.style.display = 'none';
 	}
 }
 
 // cashes out of the value (adds money to totalMoney), and rests and moves to 
 // the next trial
 function cashOut() {
-	document.getElementById("collect").play();
+	// plays sound
+	collect.play();
+
+	// changes variables
 	totalMoney += money
-	document.getElementById('totalMoney').innerHTML = 'Total Earned: $' + displayMoney(totalMoney);
 	previousMoney = money;
+
+	// stores data
 	data['trials'].push({'clicks': click, 'popped?': false, 'money': money/100});
+
+	// changes elements
+	totalMoneyText.innerHTML = 'Total Earned: $' + displayMoney(totalMoney);
+
+	// calls reset function
 	reset();
 }
 
@@ -58,22 +102,39 @@ function cashOut() {
 // otherwise, it just rests the variables and increases the "trial" var.
 function reset() {
 	if (trial == maxTrials) {
+		// saves data
 		data['finalAmount'] = totalMoney/100;
-		document.getElementById('number').innerHTML = "Experiment ended.";
-		document.getElementById('balloon').style.display = 'none';
-		document.getElementById('money').innerHTML = "Balloon pops: " + totalPopped;
-		document.getElementById('cashOut').style.display = 'none';
-		document.getElementById('more').style.display = 'none';
+		
+		// changes elements
+		trialNumberText.innerHTML = "Experiment ended.";
+		moneyText.innerHTML = "Balloon pops: " + totalPopped;
+		
+		// hides elements
+		moreButton.style.display = 'none';
+		balloonImg.style.display = 'none';
+		cashOutButton.style.display = 'none';
+		poppedText.style.display = 'none';
+		poppedButton.style.display = 'none';
 	}
 	else {
+		// changes variables
 		trial++;
 		currentSize = 72;
 		click = 0;
 		money = 0;
 		random = Math.floor(Math.random() * 128 + 1);
-		document.getElementById('previousMoney').innerHTML = 'Earned on Previous Balloon: $' + displayMoney(previousMoney);
-		document.getElementById('number').innerHTML = "Balloon Number: " + trial;
-		document.getElementById('balloon').style.width = currentSize + 'px';
-		document.getElementById('money').innerHTML = 'Current Balloon: $' + displayMoney(money);
+
+		// changes elements
+		previousMoneyText.innerHTML = 'Earned on Previous Balloon: $' + displayMoney(previousMoney);
+		trialNumberText.innerHTML = "Balloon Number: " + trial;
+		balloonImg.style.width = currentSize + 'px';
+		moneyText.innerHTML = 'Current Balloon: $' + displayMoney(money);
+
+		// changes element visibility
+		balloonImg.style.display = '';
+		moreButton.style.display = '';
+		cashOutButton.style.display = '';
+		poppedText.style.display = 'none';
+		poppedButton.style.display = 'none';
 	}
 }

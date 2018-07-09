@@ -37,9 +37,10 @@
 #popped {
     position: absolute;
     bottom: 217.75px;
-    width: 176px;
+    width: 367px;
     height: 24.5px;
     right: 25%;
     left: 50%;
-    margin-left: -88px;
+    font-size: 50px;
+    margin-left: -183.5px;
 }
