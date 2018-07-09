@@ -30,7 +30,7 @@ var cashOutButton = document.getElementById('cashOut');
 
 // sound:
 var poppedSound = document.getElementById("explode");
-var collect = document.getElementById("collect");
+var collectSound = document.getElementById("collect");
 
 // displays numbers in form of x.xx
 function displayMoney(value) {
@@ -81,7 +81,7 @@ function onClick() {
 // the next trial
 function cashOut() {
 	// plays sound
-	collect.play();
+	collectSound.play();
 
 	// changes variables
 	totalMoney += money
