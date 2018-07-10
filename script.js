@@ -7,12 +7,13 @@ var totalClick = 0;
 var totalMoney = 0;
 var totalPopped = 0;
 var trial = 1;
-var maxTrials = 45
 var data = {'trials': []};
 var random = Math.floor(Math.random() * 128 + 1);
 
-// declares HTML tags:
+// constants
+const maxTrials = 45
 
+// declares HTML tags:
 // image:
 var balloonImg = document.getElementById('balloon');
 
