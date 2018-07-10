@@ -104,6 +104,7 @@ function reset() {
 	if (trial == maxTrials) {
 		// saves data
 		data['finalAmount'] = totalMoney/100;
+		data['totalPopped'] = totalPopped;
 		
 		// changes elements
 		trialNumberText.innerHTML = "Experiment ended.";
